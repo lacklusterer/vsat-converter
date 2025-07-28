@@ -27,7 +27,7 @@ jobs:
     - name: Sync dist files to gh-pages
       run: |
         # Copy files from main/dist/ to gh-pages root, overwriting existing files
-        cp -f main/dist/* gh-pages/ 2>/dev/null || true
+        cp -rf main/dist/* gh-pages/ 2>/dev/null || true
         
         # Change to gh-pages directory
         cd gh-pages
