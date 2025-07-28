@@ -263,6 +263,27 @@ body::before {
 	animation: slideInUp 0.3s ease-out;
 }
 
+.notice-message {
+	background: #f0f9ff;
+	border: 2px solid #0ea5e9;
+	color: #0369a1;
+	padding: 1.25rem;
+	border-radius: var(--radius-small);
+	margin-top: 1.5rem;
+	display: none;
+	position: relative;
+}
+
+.notice-message::before {
+	content: 'ℹ️';
+	margin-right: 0.5rem;
+}
+
+.notice-message.show {
+	display: block;
+	animation: slideInUp 0.3s ease-out;
+}
+
 .grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;

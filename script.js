@@ -664,7 +664,8 @@ function convertScore(subject, vsatScore) {
 		}
 	}
 
-	throw new Error("Điểm V-SAT nằm ngoài phạm vi cho phép");
+	// Return null for out-of-range scores instead of throwing error
+	return null;
 }
 
 // DOM elements
@@ -675,6 +676,7 @@ const resultCard = document.getElementById("resultCard");
 const resultScore = document.getElementById("resultScore");
 const resultPercentile = document.getElementById("resultPercentile");
 const errorMessage = document.getElementById("errorMessage");
+const noticeMessage = document.getElementById("noticeMessage");
 
 // Form submission handler
 form.addEventListener("submit", function (e) {
@@ -683,6 +685,7 @@ form.addEventListener("submit", function (e) {
 	// Hide previous results
 	resultCard.classList.remove("show");
 	errorMessage.classList.remove("show");
+	noticeMessage.classList.remove("show");
 
 	try {
 		const subject = subjectSelect.value;
@@ -699,6 +702,12 @@ form.addEventListener("submit", function (e) {
 
 		// Convert score
 		const result = convertScore(subject, vsatScore);
+
+		if (result === null) {
+			// Show notice for out-of-scope scores
+			noticeMessage.classList.add("show");
+			return;
+		}
 
 		// Display result
 		resultScore.textContent = result.thptScore.toFixed(2);
