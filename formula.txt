@@ -1,0 +1,8 @@
+y = c + (x - a)/(b - a) × (d - c)
+
+x = student's V-SAT score (input)
+y = equivalent THPT score (output)
+a = lowest V-SAT score in range
+b = highest V-SAT score in range
+c = corresponding lowest THPT score
+d = corresponding highest THPT score
