@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'dist/**' ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout main branch
+      uses: actions/checkout@v4
+      with:
+        ref: main
+        path: main
+
+    - name: Checkout gh-pages branch
+      uses: actions/checkout@v4
+      with:
+        ref: gh-pages
+        path: gh-pages
+
+    - name: Sync dist files to gh-pages
+      run: |
+        # Copy files from main/dist/ to gh-pages root, overwriting existing files
+        cp -f main/dist/* gh-pages/ 2>/dev/null || true
+        
+        # Change to gh-pages directory
+        cd gh-pages
+        
+        # Configure git
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # Check if there are any changes
+        if git diff --quiet && git diff --cached --quiet; then
+          echo "No changes to deploy"
+          exit 0
+        fi
+        
+        # Add and commit changes
+        git add .
+        git commit -m "Deploy from main: $(date)"
+        
+        # Push changes
+        git push origin gh-pages
+
+    - name: Report deployment
+      run: |
+        echo "Deployment completed successfully"
+        echo "Files synced from main/dist/ to gh-pages root"
