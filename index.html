@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quy đổi điểm thi V-SAT V-SAT và THPT</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Chuyển đổi điểm V-SAT sang THPT</h1>
+        </header>
+
+        <main>
+            <div class="converter-card">
+                <form id="converterForm">
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Môn học</label>
+                            <select id="subject" class="form-select" required>
+                                <option value="">Chọn môn học</option>
+                                <option value="toan">Toán</option>
+                                <option value="vatli">Vật lí</option>
+                                <option value="hoahoc">Hóa học</option>
+                                <option value="sinhhoc">Sinh học</option>
+                                <option value="lichsu">Lịch sử</option>
+                                <option value="dialy">Địa lí</option>
+                                <option value="tienganh">Tiếng Anh</option>
+                                <option value="nguvan">Ngữ văn</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vsatScore" class="form-label">Điểm V-SAT</label>
+                            <input 
+                                type="number" 
+                                id="vsatScore" 
+                                class="form-input" 
+                                placeholder="Nhập điểm V-SAT" 
+                                min="0" 
+                                max="150" 
+                                step="0.1"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <button type="submit" class="convert-btn">Chuyển đổi điểm</button>
+                </form>
+
+                <div id="resultCard" class="result-card">
+                    <div class="result-score" id="resultScore">8.5</div>
+                    <div class="result-text">Điểm THPT tương đương</div>
+                    <div class="result-percentile" id="resultPercentile">Top 20%</div>
+                    <div class="result-text">Thứ hạng trong kỳ thi</div>
+                </div>
+
+                <div id="errorMessage" class="error-message">
+                    Vui lòng kiểm tra lại thông tin đã nhập
+                </div>
+            </div>
+
+            <!-- <div class="info-section"> -->
+            <!--     <h3>Cách sử dụng</h3> -->
+            <!--     <p>1. Chọn môn học bạn muốn chuyển đổi điểm</p> -->
+            <!--     <p>2. Nhập điểm V-SAT của bạn (từ 0 đến 150)</p> -->
+            <!--     <p>3. Nhấn "Chuyển đổi điểm" để xem kết quả THPT tương đương</p> -->
+            <!-- </div> -->
+
+            <div class="info-section">
+                <h3>Về thứ hạng phần trăm</h3>
+                <p><strong>Top 3%:</strong> Xuất sắc - Thuộc nhóm điểm cao nhất</p>
+                <p><strong>Top 5-10%:</strong> Rất giỏi - Điểm số cao, vượt trội</p>
+                <p><strong>Top 20-30%:</strong> Giỏi - Điểm số trên trung bình khá</p>
+                <p><strong>Top 40-60%:</strong> Trung bình khá - Điểm số ở mức trung bình</p>
+                <p><strong>Top 70%+:</strong> Dưới trung bình - Cần cải thiện</p>
+            </div>
+
+            <!-- <div class="info-section"> -->
+            <!--     <h3>Về công cụ</h3> -->
+            <!--     <p>Công cụ sử dụng công thức nội suy tuyến tính để chuyển đổi điểm V-SAT thành điểm THPT dựa trên bảng phân vị chuẩn.</p> -->
+            <!--     <p>Kết quả chỉ mang tính chất tham khảo và có thể khác với kết quả chính thức.</p> -->
+            <!-- </div> -->
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 V-SAT Converter.</p>
+    </footer>
+
+	<script src="script.js"></script>
+    
+</body>
+</html>
